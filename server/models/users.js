@@ -52,6 +52,18 @@ module.exports = (sequelize, DataTypes) => {
 
   })
 
+
+  Users.prototype.comparePassword = function(testPassword) {
+    let password = this.password
+    return new Promise(function(resolve, reject){
+      bcrypt.compare(testPassword, password, function(err, result){
+        if(err) reject(err)
+        resolve(result)
+
+      })
+    })
+  }
+
   Users.associate = function(models) {
     // associations can be defined here
     Users.hasOne(models.Address_Users);
