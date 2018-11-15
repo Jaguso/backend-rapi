@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     zipcode: DataTypes.STRING
   }, {});
   Address_Restaurants.associate = function(models) {
-    Address_Restaurants.belongsTo(models.Restaurants);
+    Address_Restaurants.belongsTo(models.Restaurants, {foreignKey: "restaurantId"});
   };
   return Address_Restaurants;
 };

@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Restaurants.hasMany(models.Dishes);
     Restaurants.hasOne(models.Address_Restaurants);
-    Restaurants.belongsTo(models.Users);
+    Restaurants.belongsTo(models.Users, {foreignKey: "userId"});
   };
   return Restaurants;
 };

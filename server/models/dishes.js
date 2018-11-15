@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Dishes.associate = function(models) {
     // associations can be defined here
-    Dishes.belongsTo(models.Restaurants);
-    Dishes.belongsTo(models.Orders);
+    Dishes.belongsTo(models.Restaurants, {foreignKey: "restaurantId"});
+    Dishes.belongsTo(models.Orders, {foreignKey: "orderId"});
   };
   return Dishes;
 };
