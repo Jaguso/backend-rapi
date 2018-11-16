@@ -8,10 +8,13 @@ const app = express();
 
 const port = process.env.PORT || 9000
 
+const cors = require("cors");
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+
+app.use(cors());
 
 app.use('/api/v1', routes);
 
