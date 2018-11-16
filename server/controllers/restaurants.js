@@ -9,10 +9,10 @@ const createRestaurant = async(req, res) => {
         const restaurant = await Restaurants.create(req.body)
         if(!restaurant) res.status(400).json({"message": "Error to create restaurant"})
 
-        // const address_restaurant = await Address_Restaurants.create({...req.body.address_restaurant, restaurantId: restaurant.id})
-        // if(!address_restaurant) res.status(400).json({"message": "Error to create addree"})
+        const address = await Address_Restaurants.create({...req.body.address, restaurantId: restaurant.id})
+        if(!address) res.status(400).json({"message": "Error to create addree"})
 
-        return res.status(200).json({"message": "Restaurant created succesfully", restaurant})
+        return res.status(200).json({"message": "Restaurant created succesfully", restaurant, address})
 
     }catch(e){
         console.log(e.message)
